@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pavel Golovin — Senior Go Developer</title>
-  <meta name="description" content="Pavel Golovin — Senior Go Developer and Backend Engineer specializing in FinTech, distributed systems, and high-load services." />
+  <title>Павел Головин — Senior Go-разработчик</title>
+  <meta name="description" content="Павел Головин — Senior Go-разработчик и backend-инженер. Финтех, распределённые системы, высоконагруженные сервисы." />
 
-  <meta property="og:title" content="Pavel Golovin — Senior Go Developer" />
-  <meta property="og:description" content="FinTech backend, distributed systems, and high-load services in Go." />
+  <meta property="og:title" content="Павел Головин — Senior Go-разработчик" />
+  <meta property="og:description" content="Финтех, распределённые системы, высоконагруженные сервисы на Go." />
   <meta property="og:type" content="website" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -132,7 +132,7 @@
     }
     .lede {
       font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-      max-width: 42ch;
+      max-width: 44ch;
       color: var(--ink-soft);
       margin: 0 0 2.5rem;
     }
@@ -173,7 +173,7 @@
       font-family: var(--font-display);
       font-weight: 400;
       font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      line-height: 1.1;
+      line-height: 1.15;
       letter-spacing: -0.01em;
       margin: 0;
     }
@@ -194,6 +194,51 @@
     .prose strong { color: var(--ink); font-weight: 600; }
     .prose a { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
     .prose a:hover { border-bottom-color: var(--accent); }
+
+    /* Portrait in About section */
+    .about-with-photo {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .about-with-photo {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    .portrait {
+      position: relative;
+    }
+    .portrait img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      filter: grayscale(0.15) contrast(1.02);
+      border: 1px solid var(--rule);
+    }
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      border: 1px solid var(--accent);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .portrait-caption {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      text-align: right;
+    }
+    @media (max-width: 720px) {
+      .portrait { max-width: 280px; }
+      .portrait-caption { text-align: left; }
+    }
 
     .stack-groups { display: flex; flex-direction: column; gap: 1.75rem; }
     .stack-group-label {
@@ -269,9 +314,9 @@
       font-family: var(--font-display);
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15;
-      max-width: 22ch;
+      font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+      line-height: 1.2;
+      max-width: 24ch;
       margin: 0 auto 2rem;
       letter-spacing: -0.01em;
     }
@@ -309,137 +354,145 @@
 
   <header class="nav">
     <div class="nav-inner">
-      <a href="#" class="brand"><span class="dot"></span>Pavel Golovin</a>
+      <a href="#" class="brand"><span class="dot"></span>Павел Головин</a>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#learning">Learning</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">О себе</a></li>
+        <li><a href="#expertise">Экспертиза</a></li>
+        <li><a href="#stack">Стек</a></li>
+        <li><a href="#learning">Развитие</a></li>
+        <li><a href="#contact">Контакты</a></li>
       </ul>
     </div>
   </header>
 
   <main class="wrap">
 
-    <section class="hero" id="top" aria-label="Introduction">
-      <div class="eyebrow reveal reveal-1">Senior Go Developer · Backend Engineer · FinTech</div>
+    <section class="hero" id="top" aria-label="Введение">
+      <div class="eyebrow reveal reveal-1">Senior Go-разработчик · Backend-инженер · Финтех</div>
       <h1 class="reveal reveal-2">
-        Pavel <em>Golovin</em>.
+        Павел <em>Головин</em>.
       </h1>
       <p class="lede reveal reveal-3">
-        I build scalable, production-grade backend systems in Go.
-        Four-plus years on payments and transactional services where
-        correctness, low latency, and resilience aren't negotiable.
+        Проектирую и разрабатываю backend-системы на Go. Больше четырёх лет
+        в платежах и транзакционных сервисах, где корректность, низкая
+        задержка и устойчивость под нагрузкой — обязательные условия.
       </p>
       <div class="links reveal reveal-4">
-        <a class="link-pill" href="mailto:yeu344@gmail.com">Email</a>
+        <a class="link-pill" href="mailto:yeu344@gmail.com">Почта</a>
         <a class="link-pill" href="https://t.me/PabloGolobar">Telegram</a>
-        <a class="link-pill" href="https://career.habr.com/pablogolobar">Habr Career</a>
+        <a class="link-pill" href="https://career.habr.com/pablogolobar">Хабр Карьера</a>
         <a class="link-pill" href="https://github.com/PabloGolobaro">GitHub</a>
       </div>
     </section>
 
-    <section id="about" aria-label="About">
+    <section id="about" aria-label="О себе">
       <div class="section-head">
-        <div class="section-num">01 / About</div>
-        <h2>Backend that takes the business seriously.</h2>
+        <div class="section-num">01 / О себе</div>
+        <h2>Backend, который относится к бизнесу всерьёз.</h2>
       </div>
       <div class="about-grid">
         <div></div>
-        <div class="prose">
-          <p>
-            Senior Go developer with 4+ years of commercial experience designing
-            distributed architectures and high-availability services. I follow
-            <a href="https://12factor.net/">12-Factor</a> principles and care
-            deeply about database design, system architecture, and the
-            operational reliability of what I ship.
-          </p>
-          <p>
-            My background is rooted in <strong>FinTech — payments and
-            transactional systems</strong>, where I've built event-driven
-            architectures and durable workflows for mission-critical services.
-            I'm a strong advocate of <strong>Domain-Driven Design</strong> as
-            the foundation for software that mirrors the business it serves.
-          </p>
-          <p>
-            I work in an AI-augmented development workflow, using agentic tools
-            (Claude, Cursor) to ship faster without trading off code quality.
-          </p>
+        <div class="about-with-photo">
+          <div class="prose">
+            <p>
+              Senior Go-разработчик с коммерческим опытом более 4 лет. Проектирую
+              распределённые архитектуры и высокодоступные сервисы по принципам
+              <a href="https://12factor.net/">12-Factor App</a>. Уделяю серьёзное
+              внимание дизайну баз данных, архитектуре систем и операционной
+              надёжности того, что отправляется в продакшн.
+            </p>
+            <p>
+              Мой фон — <strong>финтех: платежи и транзакционные системы</strong>,
+              где требуются корректность, низкие задержки и устойчивость под
+              нагрузкой. Имею практический опыт проектирования event-driven
+              архитектур и долгоживущих рабочих процессов для критичных сервисов.
+              Сторонник <strong>Domain-Driven Design</strong> как основы для
+              программ, которые отражают бизнес, который они обслуживают.
+            </p>
+            <p>
+              Работаю в AI-augmented подходе: использую агентные инструменты
+              (Claude, Cursor), чтобы быстрее доставлять результат без потерь
+              в качестве кода.
+            </p>
+          </div>
+          <figure class="portrait">
+            <img src="photo.jpg" alt="Павел Головин" loading="lazy" />
+            <figcaption class="portrait-caption">Павел Головин</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section id="expertise" aria-label="Expertise">
+    <section id="expertise" aria-label="Экспертиза">
       <div class="section-head">
-        <div class="section-num">02 / Expertise</div>
-        <h2>What I do well.</h2>
+        <div class="section-num">02 / Экспертиза</div>
+        <h2>Что делаю хорошо.</h2>
       </div>
       <div class="expertise-grid">
         <div></div>
         <div class="cards">
           <article class="card">
             <div class="card-num">01</div>
-            <h3>Backend engineering</h3>
-            <p>Designing and building scalable Go microservices for production.</p>
+            <h3>Backend-разработка</h3>
+            <p>Проектирование и разработка масштабируемых микросервисов на Go.</p>
           </article>
           <article class="card">
             <div class="card-num">02</div>
-            <h3>System design &amp; architecture</h3>
-            <p>Applying sound architectural principles to complex business domains.</p>
+            <h3>Системный дизайн</h3>
+            <p>Применение архитектурных принципов к сложным предметным областям.</p>
           </article>
           <article class="card">
             <div class="card-num">03</div>
-            <h3>High-load systems</h3>
-            <p>Services that perform reliably under pressure — latency, throughput, failure modes.</p>
+            <h3>Высокие нагрузки</h3>
+            <p>Сервисы, которые надёжно работают под давлением — латентность, пропускная способность, отказы.</p>
           </article>
           <article class="card">
             <div class="card-num">04</div>
-            <h3>Database engineering</h3>
-            <p>Schema design, query optimization, and operational management.</p>
+            <h3>Базы данных</h3>
+            <p>Проектирование схем, оптимизация запросов, эксплуатация в продакшне.</p>
           </article>
           <article class="card">
             <div class="card-num">05</div>
-            <h3>Workflow orchestration</h3>
-            <p>Expert in Uber Temporal — both development and operations.</p>
+            <h3>Оркестрация процессов</h3>
+            <p>Глубокая экспертиза в Uber Temporal — и разработка, и эксплуатация.</p>
           </article>
           <article class="card">
             <div class="card-num">06</div>
-            <h3>Distributed systems</h3>
-            <p>Event-driven architectures, async messaging, eventual consistency.</p>
+            <h3>Распределённые системы</h3>
+            <p>Event-driven архитектуры, асинхронный обмен сообщениями, eventual consistency.</p>
           </article>
           <article class="card">
             <div class="card-num">07</div>
-            <h3>Auth &amp; identity</h3>
-            <p>Keycloak, OAuth 2.0 / OIDC flows, secure identity management.</p>
+            <h3>Аутентификация</h3>
+            <p>Keycloak, OAuth 2.0 / OIDC, безопасное управление идентификацией.</p>
           </article>
           <article class="card">
             <div class="card-num">08</div>
             <h3>Domain-Driven Design</h3>
-            <p>Preferred approach to modeling complex business domains.</p>
+            <p>Предпочитаемый подход к моделированию сложных бизнес-доменов.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="stack" aria-label="Stack">
+    <section id="stack" aria-label="Стек">
       <div class="section-head">
-        <div class="section-num">03 / Stack</div>
-        <h2>Tools I reach for.</h2>
+        <div class="section-num">03 / Стек</div>
+        <h2>Инструменты, к которым обращаюсь.</h2>
       </div>
       <div class="stack-list">
         <div></div>
         <div class="stack-groups">
 
           <div>
-            <div class="stack-group-label">Language</div>
+            <div class="stack-group-label">Язык</div>
             <div class="stack-tags">
               <span class="tag">Go</span>
             </div>
           </div>
 
           <div>
-            <div class="stack-group-label">Databases</div>
+            <div class="stack-group-label">Базы данных</div>
             <div class="stack-tags">
               <span class="tag">PostgreSQL</span>
               <span class="tag">ClickHouse</span>
@@ -448,7 +501,7 @@
           </div>
 
           <div>
-            <div class="stack-group-label">Messaging &amp; Streaming</div>
+            <div class="stack-group-label">Очереди и стриминг</div>
             <div class="stack-tags">
               <span class="tag">Kafka</span>
               <span class="tag">NATS</span>
@@ -456,14 +509,14 @@
           </div>
 
           <div>
-            <div class="stack-group-label">Workflow Orchestration</div>
+            <div class="stack-group-label">Оркестрация</div>
             <div class="stack-tags">
               <span class="tag">Temporal</span>
             </div>
           </div>
 
           <div>
-            <div class="stack-group-label">Identity &amp; Auth</div>
+            <div class="stack-group-label">Идентификация и доступ</div>
             <div class="stack-tags">
               <span class="tag">Keycloak</span>
               <span class="tag">OAuth 2.0</span>
@@ -472,7 +525,7 @@
           </div>
 
           <div>
-            <div class="stack-group-label">APIs &amp; Communication</div>
+            <div class="stack-group-label">API и протоколы</div>
             <div class="stack-tags">
               <span class="tag">gRPC</span>
               <span class="tag">Protobuf</span>
@@ -480,7 +533,7 @@
           </div>
 
           <div>
-            <div class="stack-group-label">Infrastructure &amp; DevOps</div>
+            <div class="stack-group-label">Инфраструктура и DevOps</div>
             <div class="stack-tags">
               <span class="tag">Docker</span>
               <span class="tag">Kubernetes</span>
@@ -493,19 +546,19 @@
       </div>
     </section>
 
-    <section id="learning" aria-label="Currently learning">
+    <section id="learning" aria-label="Развитие">
       <div class="section-head">
-        <div class="section-num">04 / Learning</div>
-        <h2>What's next.</h2>
+        <div class="section-num">04 / Развитие</div>
+        <h2>Над чем работаю сейчас.</h2>
       </div>
       <div class="about-grid">
         <div></div>
         <div class="learning">
-          <div class="learning-label">Currently studying</div>
+          <div class="learning-label">В фокусе изучения</div>
           <p>
-            Advanced distributed systems patterns — saga orchestration,
-            consensus algorithms, and resilience strategies for large-scale
-            financial systems.
+            Продвинутые паттерны распределённых систем — оркестрация саг,
+            алгоритмы консенсуса, стратегии устойчивости для крупных
+            финансовых платформ.
           </p>
         </div>
       </div>
@@ -516,10 +569,10 @@
   <footer id="contact">
     <div class="wrap">
       <p class="cta">
-        Have a system worth building? <a href="https://t.me/PabloGolobar">Get in touch.</a>
+        Есть система, которую стоит построить? <a href="https://t.me/PabloGolobar">Напишите.</a>
       </p>
       <div class="footnote">
-        © 2026 Pavel Golovin · English: professional working proficiency
+        © 2022 — 2026 Павел Головин · Английский: B2 (upper-intermediate)
       </div>
     </div>
   </footer>
