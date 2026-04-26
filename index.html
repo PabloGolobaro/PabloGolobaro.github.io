@@ -247,6 +247,9 @@
       font-size: 0.85rem;
     }
     .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.4rem 0.8rem;
       background: transparent;
       border: 1px solid var(--rule);
@@ -254,6 +257,14 @@
       transition: all 0.15s ease;
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .tag svg, .tag img {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.75;
+      transition: opacity 0.15s ease;
+    }
+    .tag:hover svg, .tag:hover img { opacity: 1; }
 
     .cards {
       display: grid;
@@ -479,58 +490,69 @@
           <div>
             <div class="stack-group-label">Язык</div>
             <div class="stack-tags">
-              <span class="tag">Go</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/go/4a4a4a" alt="" />Go</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">Базы данных</div>
             <div class="stack-tags">
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">ClickHouse</span>
-              <span class="tag">Redis</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/postgresql/4a4a4a" alt="" />PostgreSQL</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/clickhouse/4a4a4a" alt="" />ClickHouse</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/mongodb/4a4a4a" alt="" />MongoDB</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/redis/4a4a4a" alt="" />Redis</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">Очереди и стриминг</div>
             <div class="stack-tags">
-              <span class="tag">Kafka</span>
-              <span class="tag">NATS</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/apachekafka/4a4a4a" alt="" />Kafka</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/natsdotio/4a4a4a" alt="" />NATS</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">Оркестрация</div>
             <div class="stack-tags">
-              <span class="tag">Temporal</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/temporal/4a4a4a" alt="" />Temporal</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">Идентификация и доступ</div>
             <div class="stack-tags">
-              <span class="tag">Keycloak</span>
-              <span class="tag">OAuth 2.0</span>
-              <span class="tag">OIDC</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/keycloak/4a4a4a" alt="" />Keycloak</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/oauth/4a4a4a" alt="" />OAuth 2.0</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/openid/4a4a4a" alt="" />OIDC</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">API и протоколы</div>
             <div class="stack-tags">
-              <span class="tag">gRPC</span>
-              <span class="tag">Protobuf</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/grpc/4a4a4a" alt="" />gRPC</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/protobuf/4a4a4a" alt="" />Protobuf</span>
+              <span class="tag">REST</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="stack-group-label">Наблюдаемость</div>
+            <div class="stack-tags">
+              <span class="tag"><img src="https://cdn.simpleicons.org/prometheus/4a4a4a" alt="" />Prometheus</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/grafana/4a4a4a" alt="" />Grafana</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/jaeger/4a4a4a" alt="" />Jaeger</span>
             </div>
           </div>
 
           <div>
             <div class="stack-group-label">Инфраструктура и DevOps</div>
             <div class="stack-tags">
-              <span class="tag">Docker</span>
-              <span class="tag">Kubernetes</span>
-              <span class="tag">GitHub Actions</span>
-              <span class="tag">GitLab CI</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/docker/4a4a4a" alt="" />Docker</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/kubernetes/4a4a4a" alt="" />Kubernetes</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/githubactions/4a4a4a" alt="" />GitHub Actions</span>
+              <span class="tag"><img src="https://cdn.simpleicons.org/gitlab/4a4a4a" alt="" />GitLab CI</span>
             </div>
           </div>
 
