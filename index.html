@@ -198,18 +198,20 @@
     /* Portrait in About section */
     .about-with-photo {
       display: grid;
-      grid-template-columns: 1fr 220px;
+      grid-template-columns: 1fr 200px;
       gap: 3rem;
       align-items: start;
     }
-    @media (max-width: 720px) {
+    @media (max-width: 880px) {
       .about-with-photo {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
       }
     }
     .portrait {
       position: relative;
+      max-width: 200px;
+      margin-right: 12px; /* room for the offset frame */
     }
     .portrait img {
       width: 100%;
@@ -217,14 +219,19 @@
       object-fit: cover;
       filter: grayscale(0.15) contrast(1.02);
       border: 1px solid var(--rule);
+      position: relative;
+      z-index: 1;
     }
     .portrait::after {
       content: "";
       position: absolute;
-      inset: 12px -12px -12px 12px;
+      top: 12px;
+      left: 12px;
+      right: -12px;
+      bottom: -12px;
       border: 1px solid var(--accent);
-      z-index: -1;
       pointer-events: none;
+      z-index: 0;
     }
     .portrait-caption {
       font-family: var(--font-mono);
@@ -232,12 +239,11 @@
       color: var(--ink-soft);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-top: 1rem;
-      text-align: right;
+      margin-top: 1.5rem;
+      text-align: left;
     }
-    @media (max-width: 720px) {
-      .portrait { max-width: 280px; }
-      .portrait-caption { text-align: left; }
+    @media (max-width: 880px) {
+      .portrait { max-width: 260px; }
     }
 
     .stack-groups { display: flex; flex-direction: column; gap: 1.75rem; }
@@ -426,7 +432,7 @@
     <section id="expertise" aria-label="Экспертиза">
       <div class="section-head">
         <div class="section-num">02 / Экспертиза</div>
-        <h2>Что делаю хорошо.</h2>
+        <h2>На чём держится мой опыт.</h2>
       </div>
       <div class="expertise-grid">
         <div></div>
