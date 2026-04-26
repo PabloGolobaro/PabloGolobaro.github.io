@@ -198,7 +198,7 @@
     /* Portrait in About section */
     .about-with-photo {
       display: grid;
-      grid-template-columns: 1fr 200px;
+      grid-template-columns: 1fr 260px;
       gap: 3rem;
       align-items: start;
     }
@@ -209,7 +209,7 @@
       }
     }
     .portrait {
-      max-width: 200px;
+      max-width: 260px;
     }
     .portrait img {
       display: block;
@@ -218,8 +218,6 @@
       object-fit: cover;
       filter: grayscale(0.15) contrast(1.02);
       border: 1px solid var(--rule);
-      /* Offset accent frame, drawn as a shadow so it can't shift the layout */
-      box-shadow: 12px 12px 0 -1px var(--bg), 12px 12px 0 0 var(--accent);
     }
     .portrait-caption {
       font-family: var(--font-mono);
@@ -227,11 +225,11 @@
       color: var(--ink-soft);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-top: 1.75rem; /* room for the offset frame */
+      margin-top: 1rem;
       text-align: left;
     }
     @media (max-width: 880px) {
-      .portrait { max-width: 260px; }
+      .portrait { max-width: 300px; }
     }
 
     .stack-groups { display: flex; flex-direction: column; gap: 1.75rem; }
