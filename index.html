@@ -218,6 +218,11 @@
       object-fit: cover;
       filter: grayscale(0.15) contrast(1.02);
       border: 1px solid var(--rule);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    }
+    .portrait:hover img {
+      transform: scale(1.03);
+      filter: grayscale(0) contrast(1.05);
     }
     .portrait-caption {
       font-family: var(--font-mono);
@@ -337,6 +342,7 @@
       margin-top: 4rem;
     }
 
+    /* Hero entrance animations */
     .reveal {
       opacity: 0;
       transform: translateY(12px);
@@ -347,8 +353,62 @@
     .reveal-3 { animation-delay: 0.25s; }
     .reveal-4 { animation-delay: 0.35s; }
     @keyframes reveal { to { opacity: 1; transform: none; } }
+
+    /* ── Scroll-triggered reveal ── */
+    .sr {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sr.visible { opacity: 1; transform: none; }
+    .sr-d1 { transition-delay: 0.08s; }
+    .sr-d2 { transition-delay: 0.16s; }
+    .sr-d3 { transition-delay: 0.24s; }
+    .sr-d4 { transition-delay: 0.32s; }
+    .sr-d5 { transition-delay: 0.40s; }
+    .sr-d6 { transition-delay: 0.48s; }
+    .sr-d7 { transition-delay: 0.56s; }
+    .sr-d8 { transition-delay: 0.64s; }
+
+    /* ── Scroll progress bar ── */
+    .nav-progress {
+      position: absolute;
+      bottom: -1px; left: 0;
+      height: 1px; width: 0%;
+      background: var(--accent);
+      transition: width 0.08s linear;
+      pointer-events: none;
+    }
+
+    /* ── Active nav link indicator ── */
+    .nav ul li a {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    .nav ul li a.active { color: var(--accent); }
+    .nav ul li a.active::after { width: 100%; }
+
+    /* ── Pulsing brand dot ── */
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+      55%       { box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 0%, transparent); }
+    }
+    .brand .dot { animation: dot-pulse 2.8s ease-in-out infinite; }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal { animation: none; opacity: 1; transform: none; }
+      .sr { opacity: 1; transform: none; transition: none; }
+      .brand .dot { animation: none; }
+      .nav-progress { display: none; }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -366,6 +426,7 @@
         <li><a href="#contact">Контакты</a></li>
       </ul>
     </div>
+    <div class="nav-progress" id="nav-progress"></div>
   </header>
 
   <main class="wrap">
@@ -389,14 +450,14 @@
     </section>
 
     <section id="about" aria-label="О себе">
-      <div class="section-head">
+      <div class="section-head sr">
         <div class="section-num">01 / О себе</div>
         <h2>Backend, который относится к бизнесу всерьёз.</h2>
       </div>
       <div class="about-grid">
         <div></div>
         <div class="about-with-photo">
-          <div class="prose">
+          <div class="prose sr sr-d1">
             <p>
               Senior Go-разработчик с коммерческим опытом более 4 лет. Проектирую
               распределённые архитектуры и высокодоступные сервисы по принципам
@@ -418,7 +479,7 @@
               в качестве кода.
             </p>
           </div>
-          <figure class="portrait">
+          <figure class="portrait sr sr-d2">
             <img src="photo.jpg" alt="Павел Головин" loading="lazy" />
             <figcaption class="portrait-caption">Павел Головин</figcaption>
           </figure>
@@ -427,49 +488,49 @@
     </section>
 
     <section id="expertise" aria-label="Экспертиза">
-      <div class="section-head">
+      <div class="section-head sr">
         <div class="section-num">02 / Экспертиза</div>
         <h2>На чём держится мой опыт.</h2>
       </div>
       <div class="expertise-grid">
         <div></div>
         <div class="cards">
-          <article class="card">
+          <article class="card sr sr-d1">
             <div class="card-num">01</div>
             <h3>Backend-разработка</h3>
             <p>Проектирование и разработка масштабируемых микросервисов на Go.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d2">
             <div class="card-num">02</div>
             <h3>Системный дизайн</h3>
             <p>Применение архитектурных принципов к сложным предметным областям.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d3">
             <div class="card-num">03</div>
             <h3>Высокие нагрузки</h3>
             <p>Сервисы, которые надёжно работают под давлением — латентность, пропускная способность, отказы.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d4">
             <div class="card-num">04</div>
             <h3>Базы данных</h3>
             <p>Проектирование схем, оптимизация запросов, эксплуатация в продакшне.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d5">
             <div class="card-num">05</div>
             <h3>Оркестрация процессов</h3>
             <p>Глубокая экспертиза в Uber Temporal — и разработка, и эксплуатация.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d6">
             <div class="card-num">06</div>
             <h3>Распределённые системы</h3>
             <p>Event-driven архитектуры, асинхронный обмен сообщениями, eventual consistency.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d7">
             <div class="card-num">07</div>
             <h3>Аутентификация</h3>
             <p>Keycloak, OAuth 2.0 / OIDC, безопасное управление идентификацией.</p>
           </article>
-          <article class="card">
+          <article class="card sr sr-d8">
             <div class="card-num">08</div>
             <h3>Domain-Driven Design</h3>
             <p>Предпочитаемый подход к моделированию сложных бизнес-доменов.</p>
@@ -479,7 +540,7 @@
     </section>
 
     <section id="stack" aria-label="Стек">
-      <div class="section-head">
+      <div class="section-head sr">
         <div class="section-num">03 / Стек</div>
         <h2>Инструменты, к которым обращаюсь.</h2>
       </div>
@@ -487,14 +548,14 @@
         <div></div>
         <div class="stack-groups">
 
-          <div>
+          <div class="sr sr-d1">
             <div class="stack-group-label">Язык</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/go/4a4a4a" alt="" />Go</span>
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d2">
             <div class="stack-group-label">Базы данных</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/postgresql/4a4a4a" alt="" />PostgreSQL</span>
@@ -504,7 +565,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d3">
             <div class="stack-group-label">Очереди и стриминг</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/apachekafka/4a4a4a" alt="" />Kafka</span>
@@ -512,14 +573,14 @@
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d4">
             <div class="stack-group-label">Оркестрация</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/temporal/4a4a4a" alt="" />Temporal</span>
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d5">
             <div class="stack-group-label">Идентификация и доступ</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/keycloak/4a4a4a" alt="" />Keycloak</span>
@@ -528,16 +589,16 @@
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d6">
             <div class="stack-group-label">API и протоколы</div>
             <div class="stack-tags">
-              <span class="tag"><img src="https://cdn.simpleicons.org/grpc/4a4a4a" alt="" />gRPC</span>
-              <span class="tag"><img src="https://cdn.simpleicons.org/protobuf/4a4a4a" alt="" />Protobuf</span>
+              <span class="tag">gRPC</span>
+              <span class="tag">Protobuf</span>
               <span class="tag">REST</span>
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d7">
             <div class="stack-group-label">Наблюдаемость</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/prometheus/4a4a4a" alt="" />Prometheus</span>
@@ -546,7 +607,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="sr sr-d8">
             <div class="stack-group-label">Инфраструктура и DevOps</div>
             <div class="stack-tags">
               <span class="tag"><img src="https://cdn.simpleicons.org/docker/4a4a4a" alt="" />Docker</span>
@@ -561,13 +622,13 @@
     </section>
 
     <section id="learning" aria-label="Развитие">
-      <div class="section-head">
+      <div class="section-head sr">
         <div class="section-num">04 / Развитие</div>
         <h2>Над чем работаю сейчас.</h2>
       </div>
       <div class="about-grid">
         <div></div>
-        <div class="learning">
+        <div class="learning sr sr-d1">
           <div class="learning-label">В фокусе изучения</div>
           <p>
             Продвинутые паттерны распределённых систем — оркестрация саг,
@@ -582,14 +643,52 @@
 
   <footer id="contact">
     <div class="wrap">
-      <p class="cta">
+      <p class="cta sr">
         Есть система, которую стоит построить? <a href="https://t.me/PabloGolobar">Напишите.</a>
       </p>
-      <div class="footnote">
+      <div class="footnote sr sr-d1">
         © 2022 — 2026 Павел Головин · Английский: B2 (upper-intermediate)
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const progress = document.getElementById('nav-progress');
+      const navLinks = document.querySelectorAll('.nav ul li a[href^="#"]');
+      const sections = Array.from(document.querySelectorAll('section[id], footer[id]'));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      );
+      document.querySelectorAll('.sr').forEach((el) => observer.observe(el));
+
+      function onScroll() {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+
+        let current = '';
+        sections.forEach((section) => {
+          if (scrolled >= section.offsetTop - 120) current = section.id;
+        });
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 
 </body>
 </html>
